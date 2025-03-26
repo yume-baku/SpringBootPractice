@@ -16,14 +16,14 @@ public class ContactController {
 		mv.setViewName("confirmation");
 
 		mv.addObject("lastName", contactData.getLastName());
-	    mv.addObject("firstName", contactData.getFirstName());
-	    mv.addObject("email", contactData.getEmail());
-	    mv.addObject("phone", contactData.getPhone());
-	    mv.addObject("zipCode", contactData.getZipCode());
-	    mv.addObject("address", contactData.getAddress());
-	    mv.addObject("buildingName", contactData.getBuildingName());
-	    mv.addObject("contactType", contactData.getContactType());
-	    mv.addObject("body", contactData.getBody());
+		mv.addObject("firstName", contactData.getFirstName());
+		mv.addObject("email", contactData.getEmail());
+		mv.addObject("phone", contactData.getPhone());
+		mv.addObject("zipCode", contactData.getZipCode());
+		mv.addObject("address", contactData.getAddress());
+		mv.addObject("buildingName", contactData.getBuildingName());
+		mv.addObject("contactType", contactData.getContactType());
+		mv.addObject("body", contactData.getBody());
 
 		return mv;
 	}

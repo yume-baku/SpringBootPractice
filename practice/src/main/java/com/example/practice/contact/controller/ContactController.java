@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.practice.contact.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -11,29 +11,31 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.form.ContactForm;
-import com.example.demo.service.ContactService;
+import com.example.practice.contact.form.ContactForm;
+import com.example.practice.contact.service.ContactService;
 
 @Controller
+@RequestMapping("/contact")
 public class ContactController {
 
 	@Autowired
 	private ContactService contactService;
 
-	@GetMapping("/contact")
+	@GetMapping()
 	public String contact(Model model) {
 		model.addAttribute("contactForm", new ContactForm());
 
-		return "contact";
+		return "/contact/index";
 	}
 
-	@PostMapping("/contact")
+	@PostMapping()
 	public String contact(@Validated @ModelAttribute("contactForm") ContactForm contactForm, BindingResult errorResult,
 			HttpServletRequest request) {
 
 		if (errorResult.hasErrors()) {
-			return "contact";
+			return "/contact/index";
 		}
 
 		HttpSession session = request.getSession();
@@ -42,17 +44,17 @@ public class ContactController {
 		return "redirect:/contact/confirm";
 	}
 
-	@GetMapping("/contact/confirm")
+	@GetMapping("/confirm")
 	public String confirm(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
 
 		ContactForm contactForm = (ContactForm) session.getAttribute("contactForm");
 		model.addAttribute("contactForm", contactForm);
-		return "confirmation";
+		return "/contact/confirmation";
 	}
 
-	@PostMapping("/contact/register")
+	@PostMapping("/register")
 	public String register(Model model, HttpServletRequest request) {
 
 		HttpSession session = request.getSession();
@@ -63,7 +65,7 @@ public class ContactController {
 		return "redirect:/contact/complete";
 	}
 
-	@GetMapping("/contact/complete")
+	@GetMapping("/complete")
 	public String complete(Model model, HttpServletRequest request) {
 
 		if (request.getSession(false) == null) {
@@ -76,6 +78,6 @@ public class ContactController {
 
 		session.invalidate();
 
-		return "completion";
+		return "contact/completion";
 	}
 }

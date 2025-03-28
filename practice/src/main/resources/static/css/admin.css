@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+body {
+	background-color: #F6E1E1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+h1{
+	color: #ab0f50;
+	text-align: center;
+	margin:10px;
+}
+
+.container {
+	background-color: #ffffff;
+	margin:10px;
+	padding: o;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container table {
+	border-color: #ab0f50;
+}
+
+.container table thead tr{
+	color:#ffffff;
+	background-color: #ab0f50;
+}
+
+.container table tbody tr td{
+	border: 2px #dddddddd solid;
+}
+
+.container td{
+	padding: 0 10px;
+	min-width: 150px;
+}

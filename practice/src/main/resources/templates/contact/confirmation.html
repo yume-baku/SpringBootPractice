@@ -6,68 +6,67 @@
 	<link th:href="@{/css/contact.css}" rel="stylesheet">
 </head>
 <body>
-	<body>
-		<h1>お問い合わせ内容の確認</h1>
-		<div class="container">
-			<form th:action="@{/contact/register}" th:object="${contactForm}" method="post">
-				<table>
-					<tr>
-						<td>姓</td>
-						<td>
-							<span th:text="*{lastName}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>名</td>
-						<td>
-							<span th:text="*{firstName}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>メールアドレス</td>
-						<td>
-							<span th:text="*{email}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>電話番号</td>
-						<td>
-							<span th:text="*{phone}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>郵便番号</td>
-						<td>
-							<span th:text="${zipCode}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>住所</td>
-						<td>
-							<span th:text="*{address}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>建物名</td>
-						<td>
-							<span th:text="*{buildingName}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>お問い合わせ種別</td>
-						<td>
-							<span th:text="*{contactType}"></span>
-						</td>
-					</tr>
-					<tr>
-						<td>お問い合わせ内容</td>
-						<td>
-							<span th:text="*{body}"></span>
-						</td>
-					</tr>
-				</table>
-				<input class="confirm-button" type="submit" value="送信">
-			</form>
-		</div>
+	<h1>お問い合わせ内容の確認</h1>
+	<div class="container">
+		<form th:action="@{/contact/register}" th:object="${contactForm}" method="post">
+			<table>
+				<tr>
+					<td>姓</td>
+					<td>
+						<span th:text="*{lastName}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>名</td>
+					<td>
+						<span th:text="*{firstName}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>メールアドレス</td>
+					<td>
+						<span th:text="*{email}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>電話番号</td>
+					<td>
+						<span th:text="*{phone}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>郵便番号</td>
+					<td>
+						<span th:text="${zipCode}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>住所</td>
+					<td>
+						<span th:text="*{address}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>建物名</td>
+					<td>
+						<span th:text="*{buildingName}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>お問い合わせ種別</td>
+					<td>
+						<span th:text="*{contactType}"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>お問い合わせ内容</td>
+					<td>
+						<span th:text="*{body}"></span>
+					</td>
+				</tr>
+			</table>
+			<input class="confirm-button" type="submit" value="送信">
+		</form>
+	</div>
 </body>
 </html>

@@ -1,4 +1,6 @@
-package com.example.demo.entity;
+package com.example.practice.contact.entity;
+
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,5 +47,11 @@ public class Contact {
 
 	@Column(name = "body", nullable = false)
 	private String body;
+
+	@Column(name = "created_at")
+	private Date createdAt;
+
+	@Column(name = "updated_at")
+	private Date updatedAt;
 
 }

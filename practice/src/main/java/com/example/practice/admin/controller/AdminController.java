@@ -23,6 +23,18 @@ public class AdminController {
 	@Autowired
 	private ContactService contactService;
 
+	@GetMapping("/signin")
+	public String signin() {
+
+		return "/admin/signin";
+	}
+
+	@GetMapping("/signup")
+	public String signup() {
+
+		return "/admin/signup";
+	}
+
 	@GetMapping("/contacts")
 	public String contacts(Model model) {
 

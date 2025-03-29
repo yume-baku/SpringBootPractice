@@ -9,6 +9,12 @@ public interface ContactService {
 
 	void saveContact(ContactForm contactForm);
 
+	void updateContact(ContactForm contactForm);
+
+	void deleteContactById(Long id);
+
+	ContactForm toContactForm(Contact contact);
+
 	List<Contact> getAllContacts();
 
 	Contact findById(Long id);

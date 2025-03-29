@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 body {
 	background-color: #F6E1E1;
 	display: flex;
@@ -70,3 +69,4 @@ h1{
 	border-radius: 20px;
 	cursor: pointer;
 }
+

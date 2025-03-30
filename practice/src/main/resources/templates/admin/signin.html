@@ -8,22 +8,39 @@
 <body>
 	<h1>管理者ログイン</h1>
 	<div class="container">
-		<table>
-			<tr>
-				<td>メールアドレス</td>
-				<td>
-					<input type="text" disabled>
-				</td>
-			</tr>
-			<tr>
-				<td>パスワード</td>
-				<td>
-					<input type="password" disabled>
-				</td>
-			</tr>
-		</table>
-		<a th:href="@{/admin/signup}">管理者新規登録</a>
-	</div>
+		<form method="post" th:action="@{/admin/signin}">
 
+			<div th:if="${param.error}">
+				ログインに失敗しました
+
+				<div th:if="${session[SPRING_SECURITY_LAST_EXCEPTION] != null}">
+						<!-- Spring Security発行のメッセージあれば表示。日本語メッセージはresources/snippetで取得の定義-->
+				    <span th:text="${session[SPRING_SECURITY_LAST_EXCEPTION].message}"></span>
+				</div>
+			</div>
+			<div th:if="${param.logout}">
+			    ログアウトしました
+			</div>
+
+			<table>
+				<tr>
+					<td>メールアドレス</td>
+					<td>
+						<input type="text" name="username">
+					</td>
+				</tr>
+				<tr>
+					<td>パスワード</td>
+					<td>
+						<input type="password" name="password">
+					</td>
+				</tr>
+			</table>
+			<button class="action-button" type="submit">
+			ログイン
+			</button>
+		</form>
+	</div>
+	<a th:href="@{/admin/signup}">管理者新規登録</a>
 </body>
 </html>

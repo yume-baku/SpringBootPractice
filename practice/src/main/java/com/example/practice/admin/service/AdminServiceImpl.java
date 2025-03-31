@@ -3,6 +3,7 @@ package com.example.practice.admin.service;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.practice.admin.entity.Admin;
@@ -24,7 +25,8 @@ public class AdminServiceImpl implements AdminService {
 		admin.setLastName(adminForm.getLastName());
 		admin.setFirstName(adminForm.getFirstName());
 		admin.setEmail(adminForm.getEmail());
-		admin.setPassword(adminForm.getPassword());
+		String encodedPassword = new BCryptPasswordEncoder().encode(adminForm.getPassword());
+		admin.setPassword(encodedPassword);// 暗号化して保存
 		admin.setCurrentSignInAt(new Date());
 		admin.setCreatedAt(new Date());
 		admin.setUpdatedAt(new Date());

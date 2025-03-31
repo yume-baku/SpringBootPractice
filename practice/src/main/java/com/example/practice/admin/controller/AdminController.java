@@ -49,15 +49,13 @@ public class AdminController {
 			@Validated @ModelAttribute("adminForm") AdminForm adminForm, BindingResult errorResult) {
 
 		if ("back".equals(action)) { // 戻るボタン押下時
-			return String.format("/admin/signin");
+			return String.format("redirect:/admin/signin");
 
 		}
 
 		if (errorResult.hasErrors()) {
-			return "/admin/signup";
+			return "redirect:/admin/signup";
 		}
-
-		// TODO: Spring Securityでパスワードの暗号化
 
 		adminService.saveAdmin(adminForm);
 

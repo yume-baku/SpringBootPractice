@@ -18,6 +18,7 @@
 					<th>お問い合わせ種別</th>
 					<th>作成日時</th>
 					<th>更新日時</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,6 +29,11 @@
 					<td th:text="*{contactType}"></td>
 					<td th:text="*{#dates.format(createdAt, 'yyyy/MM/dd HH:mm:ss')}"></td>
 					<td th:text="*{#dates.format(updatedAt, 'yyyy/MM/dd HH:mm:ss')}"></td>
+					<td>
+						<a th:href="@{/admin/contact/{id}(id=*{id})}" class="edit-button">
+							詳細
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

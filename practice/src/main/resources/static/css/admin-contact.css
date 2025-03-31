@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
-
 body {
-	background-color: #dbedf0;
+	background-color: #F6E1E1;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -10,7 +9,7 @@ body {
 }
 
 h1{
-	color: #1760a0;
+	color: #ab0f50;
 	text-align: center;
 	margin:10px;
 }
@@ -34,15 +33,28 @@ td{
 	align-items: center;
 }
 
-.confirm-button {
-	color: #ffffff;
-	background-color: #1760a0;
+.buttons {
+	width: 100%;
+}
+
+.action-button,
+.back-button{
+	margin: 0 5px;
 	padding: 10px 40px;
 	border: none;
 	border-radius: 10px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
 	cursor: pointer;
+}
+
+.action-button {
+	color: #ffffff;
+	background-color: #ab0f50;
+	float: right;
+}
+
+.back-button {
+	color: #ffffff;
+	background-color: #696969;
+	float: left;
 }
 

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.practice.admin.form.AdminForm;
+import com.example.practice.admin.service.AdminService;
 import com.example.practice.contact.entity.Contact;
 import com.example.practice.contact.form.ContactForm;
 import com.example.practice.contact.service.ContactService;
@@ -22,6 +26,43 @@ public class AdminController {
 
 	@Autowired
 	private ContactService contactService;
+
+	@Autowired
+	private AdminService adminService;
+
+	@GetMapping("/signin")
+	public String signin() {
+
+		return "/admin/signin";
+	}
+
+	@GetMapping("/signup")
+	public String signup(Model model) {
+
+		model.addAttribute("adminForm", new AdminForm());
+
+		return "/admin/signup";
+	}
+
+	@PostMapping("/register")
+	public String register(@RequestParam(required = false) String action,
+			@Validated @ModelAttribute("adminForm") AdminForm adminForm, BindingResult errorResult) {
+
+		if ("back".equals(action)) { // 戻るボタン押下時
+			return String.format("/admin/signin");
+
+		}
+
+		if (errorResult.hasErrors()) {
+			return "/admin/signup";
+		}
+
+		// TODO: Spring Securityでパスワードの暗号化
+
+		adminService.saveAdmin(adminForm);
+
+		return String.format("/admin/signin");
+	}
 
 	@GetMapping("/contacts")
 	public String contacts(Model model) {
@@ -56,7 +97,7 @@ public class AdminController {
 
 	@PostMapping("/contact/{id}/update")
 	public String updateContact(@PathVariable Long id, @RequestParam(required = false) String action,
-			@ModelAttribute("contactForm") ContactForm contactForm, Model model) {
+			@ModelAttribute("contactForm") ContactForm contactForm) {
 
 		if ("back".equals(action)) { // 戻るボタン押下時
 			return String.format("redirect:/admin/contact/%d", id);
@@ -71,7 +112,7 @@ public class AdminController {
 	}
 
 	@GetMapping("/contact/{id}/delete")
-	public String deleteContact(@PathVariable Long id, Model model) {
+	public String deleteContact(@PathVariable Long id) {
 
 		contactService.deleteContactById(id);
 

@@ -14,10 +14,18 @@ h1{
 	margin:10px;
 }
 
+table {
+	border-spacing: 10px 15px;
+}
+
+td{
+	padding: 0 10px;
+}
+
 .container {
 	background-color: #ffffff;
 	margin:10px;
-	padding: o;
+	padding: 20px;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -25,39 +33,29 @@ h1{
 	align-items: center;
 }
 
-.container table {
-	border-color: #ab0f50;
-}
-
-.container table thead tr{
-	color:#ffffff;
-	background-color: #ab0f50;
-}
-
-.container table tbody tr td{
-	border: 2px #dddddddd solid;
-}
-
-.container td{
-	padding: 0 10px;
-	min-width: 150px;
-}
-
-/*ボタン配置行*/
-.container td:nth-of-type(7){
-	width: 60px;
-	min-width: 60px;
-}
-
-.edit-button {
-	display: block;
-	text-align: center;
-	text-decoration: none;
-	color: #ffffff;
-	background-color: #696969;
+.buttons {
 	width: 100%;
+}
+
+.action-button,
+.back-button{
+	margin: 0 5px;
+	padding: 10px 40px;
 	border: none;
-	border-radius: 20px;
+	border-radius: 10px;
 	cursor: pointer;
 }
+
+.action-button {
+	color: #ffffff;
+	background-color: #ab0f50;
+	float: right;
+}
+
+.back-button {
+	color: #ffffff;
+	background-color: #696969;
+	float: left;
+}
+
 

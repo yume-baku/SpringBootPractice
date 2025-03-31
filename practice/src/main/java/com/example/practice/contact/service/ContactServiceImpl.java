@@ -31,6 +31,8 @@ public class ContactServiceImpl implements ContactService {
 		contact.setBuildingName(contactForm.getBuildingName());
 		contact.setContactType(contactForm.getContactType());
 		contact.setBody(contactForm.getBody());
+		contact.setCreatedAt(new Date());
+		contact.setUpdatedAt(new Date());
 
 		contactRepository.save(contact);
 	}
